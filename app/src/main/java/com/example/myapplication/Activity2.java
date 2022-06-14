@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Activity2 extends AppCompatActivity implements SensorEventListener {
+public class Activity2 extends AppCompatActivity implements Activity2Interface {
 
     private Button botonVolver;
     private Button botonBorrar;
@@ -26,10 +26,9 @@ public class Activity2 extends AppCompatActivity implements SensorEventListener 
     private TextView titulo1;
     private TextView titulo2;
 
-    boolean stage1 = false;
-    boolean stage2 = false;
-    long timerInicio = 0;
+
     private View root;
+    private SensorService sensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,40 +42,37 @@ public class Activity2 extends AppCompatActivity implements SensorEventListener 
         botonBorrar = (Button)findViewById(R.id.buttonBorrar);
         botonBorrar.setOnClickListener(botonBorrarListener);
 
-
         txtSensor = (TextView) findViewById(R.id.textViewSensor);
         txtAcc = (TextView) findViewById(R.id.textViewAcc);
         titulo1 = (TextView) findViewById(R.id.tituloAcelerometro);
         titulo1.setEnabled(false);
-
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sensor = new SensorService(this, sensorManager);
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-        iniSensores();
+        sensor.iniSensores();
     }
 
     @Override
     protected void onRestart(){
-        iniSensores();
+        sensor.iniSensores();
         super.onRestart();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        iniSensores();
+        sensor.iniSensores();
     }
 
     @Override
     protected void onPause(){
-        pararSensores();
+        sensor.pararSensores();
         super.onPause();
     }
-
-
 
     private View.OnClickListener botonVolverListener = new View.OnClickListener(){
         public void onClick(View v){
@@ -91,68 +87,21 @@ public class Activity2 extends AppCompatActivity implements SensorEventListener 
         }
     };
 
-
     private void irActivity1(){
         finish();
     }
 
-    protected void iniSensores(){
-        sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    protected void pararSensores(){
-        sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
-    }
-
     @Override
-    public void onSensorChanged(SensorEvent event) {
-        String txt = "";
-        float xActual;
-        long tiempoActual;
-
-        synchronized (this){
-            Log.d("sensor", event.sensor.getName());
-
-            switch(event.sensor.getType()){
-                case Sensor.TYPE_ACCELEROMETER:
-                    txt += "X: " + event.values[0]+"\n";
-                    txt += "Y: " + event.values[1]+"\n";
-                    txt += "Z: " + event.values[2]+"\n";
-                    txtAcc.setText(txt);
-
-                    tiempoActual =System.currentTimeMillis();
-                    xActual=event.values[0];
-
-                    if(xActual>-1 && xActual<1 && stage2==false) {
-                        stage1 = true;
-                    }
-
-                    if(xActual>-9 && xActual<-5 && stage1) {
-                        stage2 = true;
-                        stage1 = false;
-                        timerInicio = System.currentTimeMillis();
-                    }
-
-                    if(xActual>-1 && xActual<1 && stage2 ) {
-                        if( tiempoActual - 1000 < timerInicio) {
-                            txtSensor.setText("movimiento detectado");
-                            root.setBackgroundColor(Color.YELLOW);
-                        }
-                        stage2 = false;
-                    }
-
-                    break;
-
-                default:
-                    txtSensor.setText("No hay cambio en sensores");
-                    break;
-            }
-        }
+    public void setTxtAcc(String text){
+        this.txtAcc.setText(text);
     }
-
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
-
+    public void setTxtSensor(String text){
+        this.txtSensor.setText(text);
+    }
+    @Override
+    public void setBackgroundYellow(){
+        root.setBackgroundColor(Color.YELLOW);
     }
 
 }
