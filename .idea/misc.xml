@@ -4,6 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_2.xml" value="0.17831813576494426" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_bt.xml" value="0.24954710144927536" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_bth.xml" value="0.448501872659176" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_comunicacion.xml" value="0.2515625" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_main.xml" value="0.2515625" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_paired.xml" value="0.24456521739130435" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/activity_paired_devices.xml" value="0.2515625" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/layout/list_item_device.xml" value="0.26811594202898553" />
+        <entry key="..\:/Proyectos Android/SOA/Alimentador-Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.242" />
         <entry key="..\:/Proyectos Android/SOA/app/src/main/res/layout/activity_2.xml" value="0.27447916666666666" />
         <entry key="..\:/Proyectos Android/SOA/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
       </map>
