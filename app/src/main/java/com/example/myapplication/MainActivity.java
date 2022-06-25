@@ -11,22 +11,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity{
 
-    private Button button1;
     private Button button2;
     private Button buttonBT;
-    private EditText editText1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button1 = (Button)findViewById(R.id.button1);
-        editText1 = (EditText)findViewById(R.id.editText1);
         button2 = (Button)findViewById(R.id.buttonActivity2);
         buttonBT=(Button)findViewById(R.id.buttonBT);
 
-        button1.setOnClickListener(boton1Listener);
         button2.setOnClickListener(boton2Listener);
         buttonBT.setOnClickListener(botonBTListener);
 
@@ -50,11 +45,6 @@ public class MainActivity extends AppCompatActivity{
         Log.i("Ejecuto", "Ejecuto onResume");
     }
 
-    private View.OnClickListener boton1Listener = new View.OnClickListener(){
-        public void onClick(View v){
-        }
-    };
-
     private View.OnClickListener boton2Listener = new View.OnClickListener(){
       public void onClick(View v){
           irActivity2();
@@ -67,7 +57,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void irActivityBT(){
         Intent intent;
-        intent = new Intent(MainActivity.this, btActivity.class);
+        intent = new Intent(MainActivity.this, PairedActivity.class);
         startActivity(intent);
     }
 

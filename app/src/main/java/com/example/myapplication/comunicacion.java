@@ -23,7 +23,7 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class activity_comunicacion extends Activity
+public class comunicacion extends Activity
 {
 
 
@@ -47,7 +47,7 @@ public class activity_comunicacion extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comunicacion);
+        setContentView(R.layout.activity_comunicacion2);
         showToast("Ejecuta onCreate de activity_comunicacion");
 
         //Se definen los componentes del layout
@@ -231,7 +231,7 @@ public class activity_comunicacion extends Activity
                     bytes = mmInStream.read(buffer);
                     String readMessage = new String(buffer, 0, bytes);
 
-                     //se muestran en el layout de la activity, utilizando el handler del hilo
+                    //se muestran en el layout de la activity, utilizando el handler del hilo
                     // principal antes mencionado
                     bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
