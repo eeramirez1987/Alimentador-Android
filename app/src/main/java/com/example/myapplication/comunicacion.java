@@ -34,6 +34,9 @@ public class comunicacion extends Activity
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private StringBuilder recDataString = new StringBuilder();
+    private Button btnEncender;
+    private Button btnApagar;
+    private TextView txtSensor;
 
     private ConnectedThread mConnectedThread;
 
@@ -51,9 +54,9 @@ public class comunicacion extends Activity
         showToast("Ejecuta onCreate de activity_comunicacion");
 
         //Se definen los componentes del layout
-//        btnApagar=(Button)findViewById(R.id.btnApagar);
-//        btnEncender=(Button)findViewById(R.id.btnEncender);
-//        txtPotenciometro=(TextView)findViewById(R.id.txtValorPotenciometro);
+        btnApagar=(Button)findViewById(R.id.btnApagar);
+       btnEncender=(Button)findViewById(R.id.btnEncender);
+        txtSensor=(TextView)findViewById(R.id.txtSensor);
 
         //obtengo el adaptador del bluethoot
         btAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -63,8 +66,8 @@ public class comunicacion extends Activity
         bluetoothIn = Handler_Msg_Hilo_Principal();
 
         //defino los handlers para los botones Apagar y encender
-//        btnEncender.setOnClickListener(btnEncenderListener);
-//        btnApagar.setOnClickListener(btnApagarListener);
+        btnEncender.setOnClickListener(btnEncenderListener);
+        btnApagar.setOnClickListener(btnApagarListener);
 
     }
 
@@ -159,7 +162,7 @@ public class comunicacion extends Activity
                     if (endOfLineIndex > 0)
                     {
                         String dataInPrint = recDataString.substring(0, endOfLineIndex);
-//                        txtPotenciometro.setText(dataInPrint);
+                        txtSensor.setText(dataInPrint);
 
                         recDataString.delete(0, recDataString.length());
                     }
@@ -173,7 +176,7 @@ public class comunicacion extends Activity
     private View.OnClickListener btnEncenderListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mConnectedThread.write("1");    // Send "1" via Bluetooth
+            mConnectedThread.write("p");    // Send "p" via Bluetooth
             showToast("Encender el LED");        }
     };
 
@@ -181,7 +184,7 @@ public class comunicacion extends Activity
     private View.OnClickListener btnApagarListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mConnectedThread.write("2");    // Send "0" via Bluetooth
+            mConnectedThread.write("a");    // Send "a" via Bluetooth
             showToast("Apagar el LED");
         }
     };

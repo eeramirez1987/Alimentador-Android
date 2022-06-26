@@ -7,7 +7,7 @@
     tools:context=".btActivity">
 
     <Button
-        android:id="@+id/btnPrender"
+        android:id="@+id/btnEncender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
