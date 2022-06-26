@@ -29,9 +29,6 @@
             android:name=".comunicacion"
             android:exported="false" />
         <activity
-            android:name=".BluetoothActivity"
-            android:exported="false" />
-        <activity
             android:name=".PairedActivity"
             android:exported="false" />
         <activity

@@ -37,6 +37,7 @@ public class comunicacion extends Activity
     private Button btnEncender;
     private Button btnApagar;
     private TextView txtSensor;
+    private Button btnVolver;
 
     private ConnectedThread mConnectedThread;
 
@@ -57,7 +58,7 @@ public class comunicacion extends Activity
         btnApagar=(Button)findViewById(R.id.btnApagar);
        btnEncender=(Button)findViewById(R.id.btnEncender);
         txtSensor=(TextView)findViewById(R.id.txtSensor);
-
+        btnVolver=(Button)findViewById(R.id.btnVolver);
         //obtengo el adaptador del bluethoot
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -68,6 +69,7 @@ public class comunicacion extends Activity
         //defino los handlers para los botones Apagar y encender
         btnEncender.setOnClickListener(btnEncenderListener);
         btnApagar.setOnClickListener(btnApagarListener);
+        btnVolver.setOnClickListener(btnVolverListener);
 
     }
 
@@ -186,6 +188,25 @@ public class comunicacion extends Activity
         public void onClick(View v) {
             mConnectedThread.write("a");    // Send "a" via Bluetooth
             showToast("Apagar el LED");
+        }
+    };
+
+    //Listener del boton volver
+    private View.OnClickListener btnVolverListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            try
+            {
+                //Don't leave Bluetooth sockets open when leaving activity
+                btSocket.close();
+            } catch (IOException e2) {
+                //insert code to deal with this
+            }
+            Intent intent;
+            intent = new Intent(comunicacion.this, MainActivity.class);
+
+            startActivity(intent);
+            finish();
         }
     };
 
