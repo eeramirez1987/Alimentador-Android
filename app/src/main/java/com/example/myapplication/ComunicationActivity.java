@@ -23,7 +23,7 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class comunicacion extends Activity
+public class ComunicationActivity extends Activity
 {
 
 
@@ -203,7 +203,7 @@ public class comunicacion extends Activity
                 //insert code to deal with this
             }
             Intent intent;
-            intent = new Intent(comunicacion.this, MainActivity.class);
+            intent = new Intent(ComunicationActivity.this, MainActivity.class);
 
             startActivity(intent);
             finish();

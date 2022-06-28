@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class Activity2 extends AppCompatActivity implements Activity2Interface {
+public class SensorActivity extends AppCompatActivity implements Activity2Interface {
 
     private Button botonVolver;
     private Button botonBorrar;

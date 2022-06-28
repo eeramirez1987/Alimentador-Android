@@ -26,13 +26,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".comunicacion"
+            android:name=".ComunicationActivity"
             android:exported="false" />
         <activity
             android:name=".PairedActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity2"
+            android:name=".SensorActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

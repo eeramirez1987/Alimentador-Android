@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void irActivity2(){
         Intent intent;
-        intent = new Intent(MainActivity.this, Activity2.class);
+        intent = new Intent(MainActivity.this, SensorActivity.class);
         startActivity(intent);
     }
 }

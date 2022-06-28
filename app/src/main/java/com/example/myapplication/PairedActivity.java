@@ -6,10 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +21,6 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -102,7 +97,7 @@ public class PairedActivity extends Activity {
             finishAffinity();
 
             // Realiza un intent para iniciar la siguiente actividad
-            Intent intend = new Intent(PairedActivity.this, comunicacion.class);
+            Intent intend = new Intent(PairedActivity.this, ComunicationActivity.class);
             intend.putExtra(EXTRA_DEVICE_ADDRESS, address);
             startActivity(intend);
         }
